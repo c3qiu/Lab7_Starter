@@ -6,7 +6,7 @@ var urlsToCache = [
   '.',
   'assets/styles/main.css',
   'assets/scripts/Router.js',
-  'assets/script/main.js'
+  'assets/scripts/main.js'
 ]; 
 
 // Once the service worker has been installed, feed it some initial URLs to cache
