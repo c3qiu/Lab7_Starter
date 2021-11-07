@@ -38,7 +38,8 @@ export class Router {
      * router instance using the 'this' keyword. Substitute 'home' for the variable
      * page
      */
-  }
+    this[page] = pageFunc;
+   }
 
   /**
    * Changes the page visually to the page that has been passed in. statePopped
@@ -65,5 +66,27 @@ export class Router {
      *     and URL + hash to history
      *  4. Finally, call the stored function for the given page
      */
+
+    // 1
+    if(!this[page]){
+      console.log("Function not exist.");
+      return;
+    }
+    // 2
+    var hash;
+    if(page == 'home'){
+      hash = "";
+    }
+    else{
+      hash = '#' + page;
+    }
+    // 3
+    if(!statePopped && (window.location.hash != hash)){
+      history.pushState({page}, " ", window.location + hash );
+    }
+
+    // 4
+    this[page]();
   }
+
 }
